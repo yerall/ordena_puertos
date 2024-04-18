@@ -1,11 +1,11 @@
 # Escáner de Puertos y Ordenamiento con Nmap
 
-Este script en Bash realiza un escaneo simple en busca de puertos en un objetivo dado. Proporciona los puertos abiertos del objetivo especifico de forma ordenada para su uso es posteriores procesos.
+Este script en Bash realiza un escaneo simple en busca de puertos en un objetivo dado. Proporciona los puertos abiertos del objetivo especifico de forma ordenada para su uso en posteriores procesos.
 
 ## Características
 
 - Realizar un escaneo con Nmap `nmap -p- --open -n -sS -Pn --min-rate 6000 "$1"` que puede ser editado a preferencia.
-- Busqueda de puertos abiertos en el objetivo y los muestra de forma ordenada.
+- Busqueda de puertos abiertos en el objetivo para que los muestre de forma ordenada.
 
 ## Uso
 
