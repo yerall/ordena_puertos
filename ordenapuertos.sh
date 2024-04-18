@@ -6,19 +6,15 @@ if [ -z "$1" ]; then
     exit 1
 fi
 
-# Escanear puertos activos y guardar resultados en un archivo temporal
-nmap_output=$(nmap -sS -v --min-rate 6000 -p- "$1" -oG -)
-echo "$nmap_output" > archivotemp
+# Escanear puertos activos y guardar resultados en una variable
+nmap_output=$(nmap -p- --open -n -sS -Pn --min-rate 6000 "$1" -oG -)
 
 echo "--------------------------------------------------"
 echo "// PUERTOS ORDENADOS //"
 echo "--------------------------------------------------"
 
 # Enumerar y organizar puertos abiertos
-open_ports=$(grep -oE "[0-9]{1,5}/open" archivotemp | cut -d "/" -f 1 | tr '\n' ',' | sed 's/,$//')
+open_ports=$(echo "$nmap_output" | grep -oE "[0-9]{1,5}/open" | cut -d "/" -f 1 | tr '\n' ',' | sed 's/,$//')
 echo "$open_ports"
 
 echo "--------------------------------------------------"
-
-# Eliminar archivo temporal
-rm archivotemp
